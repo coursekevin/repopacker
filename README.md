@@ -13,7 +13,7 @@
 ## The problem
 
 You're working on a project and you find yourself accumulating large files
-which are not well-suited for git leading you to exclude from version control.
+which are not well-suited for git leading you to add them to your .gitignore.
 
 Months pass, and you find yourself wanting to share your repository including all of
 the large files which are now strewn about your repository and hidden from git.
@@ -139,5 +139,6 @@ pip install repopacker
 ## Gotchas
 
 - RepoPacker is not directly integrated with Git meaning any operations which update
-  the file tree will not be known to RepoPacker. You must remove files these files and re-add
+  the file tree (like `git mv`) will not be known to RepoPacker. 
+  You must remove files these files and re-add
   them using RepoPacker for them to be properly tracked.
