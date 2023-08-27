@@ -20,7 +20,6 @@ def config(args):
     if args.checksum:
         data.config["checksum"] = True
     if args.downloadpath:
-        print(args.downloadpath)
         data.config["downloadpath"] = args.downloadpath
 
     save(git_root, data)
