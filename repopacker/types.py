@@ -1,8 +1,9 @@
 import argparse
-from typing import Any, Callable
+from typing import Any, Callable, Optional
 from dataclasses import dataclass, field
 
 RepopackerCmd = Callable[[argparse.Namespace], None]
+
 
 @dataclass
 class RPConfig:
@@ -21,8 +22,9 @@ class Argument:
 @dataclass
 class Flag:
     flags: list[str]
-    help: str
-    action: str = "store_true"
+    action: str
+    help: str = ""
+
 
 @dataclass
 class Command:
@@ -36,4 +38,3 @@ class Command:
 
     def add_flag(self, *args, **kwargs):
         self.arguments.append(Flag(*args, **kwargs))
-

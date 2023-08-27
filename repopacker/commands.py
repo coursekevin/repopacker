@@ -8,6 +8,7 @@ from .pack import pack_command
 from .unpack import unpack_command
 from .clean import clean_command
 from .download import download_command
+from .config import config_command
 from .types import Flag
 
 
@@ -20,6 +21,7 @@ COMMANDS = [
     unpack_command,
     clean_command,
     download_command,
+    config_command,
 ]
 
 

@@ -51,16 +51,6 @@ pip install repopacker
 
 ### Basic functionality
 
-- **Initialize:** From an existing git repository initialize the RepoPacker system,
-
-  ```bash
-  repopacker init
-  ```
-
-  This will create file named `.repopacker.json` at the GitHub root
-  of your project. It contains some basic config information and will act as
-  a storage container for RepoPacker.
-
 - **Add files:** Add any large files / directories which you want tracked by
   RepoPacker:
 
@@ -68,6 +58,10 @@ pip install repopacker
   repopacker add largefile.txt
   repopacker add dir/
   ```
+
+  This will create file named `.repopacker.json` at the GitHub root
+  of your project. It contains some basic config information and will act as
+  a storage container for RepoPacker.
 
   This command does two things:
 
@@ -93,15 +87,45 @@ pip install repopacker
 
   You should upload this to an accessible location such as [dropbox](https://www.dropbox.com)
   or [Zenodo](https://zenodo.org/). Add the link to the `downloadpath` in the `.repopacker.json`.
+  Optionally you can also
 
-- **Unpack** Unpack the repository populating directories with large files in their
-  original locations,
+- **Unpack:** Populate directories with large files in their original locations,
 
   ```bash
   repopacker unpack repopack.zip
   ```
 
+### Easy downloading
+
+- **Setup:** When running pack, RepoPack will store the hash for the pack in
+  the `.repopacker.json`. You can setup a download link for your pack as,
+
+```bash
+repopacker config --downloadpath <your-download-link.zip>
+```
+
+- **Download:** You can now automatically download the zip and unpack as usual:
+
+```bash
+repopacker download repopack.zip
+repopacker unpack repopack.zip
+```
+
+**Note this will download a zip file from the internet. RepoPacker performs a basic
+checksum using the SHA256 hash of the file but this does not guarantee the zip
+file's integrity. Only use this option with repositories you can trust.**
+
 ### Additional utilities
+
+- **Initialize:** From an existing git repository initialize the RepoPacker system without
+  adding any files first.
+
+  ```bash
+  repopacker init
+  ```
+
+  This is useful if you want to setup some configuration options before adding
+  any files.
 
 - **List files:** See all files currently tracked by repopacker:
 
@@ -119,15 +143,11 @@ pip install repopacker
   This will also remove `largefile.txt` from the `.gitignore` if you have the option
   enabled.
 
-- **Download:** For projects that have setup the download link automatically download
-  the zip,
+  **Configuration:** See all configuration options:
 
   ```bash
-  repopacker downloada repopack.zip
+  repopacker config -h
   ```
-
-  **Note this will download a zip file from the internet. Only use this option with
-  repositories you can trust.**
 
 - **Clean:** When downloading an updated version of the repopacker.zip, it can be useful
   to clear all prexisting files tracked by RepoPacker:
@@ -139,6 +159,6 @@ pip install repopacker
 ## Gotchas
 
 - RepoPacker is not directly integrated with Git meaning any operations which update
-  the file tree (like `git mv`) will not be known to RepoPacker. 
+  the file tree (like `git mv`) will not be known to RepoPacker.
   You must remove files these files and re-add
   them using RepoPacker for them to be properly tracked.
