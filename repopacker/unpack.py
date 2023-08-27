@@ -13,15 +13,6 @@ def verify_zip_structure(zipf, data_files):
     # Check if there are any missing files in the zip that are in data.files
     missing_files_in_zip = data_file_set - zip_file_list
 
-    if extra_files_in_zip:
-        print(
-            f"Warning: The following files are present in the zip but not in data.files: {', '.join(extra_files_in_zip)}"
-        )
-    if missing_files_in_zip:
-        print(
-            f"Warning: The following files are missing from the zip but present in data.files: {', '.join(missing_files_in_zip)}"
-        )
-
     return not extra_files_in_zip and not missing_files_in_zip
 
 
