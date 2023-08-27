@@ -9,13 +9,15 @@ readme = "README.md"
 python = "^3.10"
 requests = "^2.31.0"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-repopacker = 'repopacker.main:main'  # main_function is the entry point function in your main.py
+repopacker = 'repopacker.main:main' 
 
 [build]
 script = "poetry run python -m repopacker"
