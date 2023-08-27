@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "repopacker"
+version = "0.1.0" # remember to change in constants.py
+description = ""
+authors = ["Kevin Course <kevin.course@mail.utoronto.ca>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+repopacker = 'repopacker.main:main'  # main_function is the entry point function in your main.py
+
+[build]
+script = "poetry run python -m repopacker"
