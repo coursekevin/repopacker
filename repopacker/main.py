@@ -19,8 +19,4 @@ def main():
     # Logic to call the function based on the command
     if hasattr(args, "func"):
         args.func(args)
-    return parser
-
-
-if __name__ == "__main__":
-    main()
+    return 0
