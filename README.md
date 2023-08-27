@@ -13,8 +13,7 @@
 ## The problem
 
 You're working on a project and you find yourself accumulating large files
-which are not well-suited for git leading you to exclude from version control
-using `.gitignore`.
+which are not well-suited for git leading you to exclude from version control.
 
 Months pass, and you find yourself wanting to share your repository including all of
 the large files which are now strewn about your repository and hidden from git.
@@ -80,10 +79,10 @@ pip install repopacker
   for your project (you can disable this behavior by setting
   the `.gitignore` flag in the `.repopacker.json` to false).
 
-  Note: files tracked by
+  **Note: files tracked by
   RepoPacker _will not_ have their changes tracked.
   All RepoPacker stores is a
-  static link to the file.
+  static link to the file.**
 
 - **Pack:** Once you have added all the files you want tracked you
   can create a zip file,
@@ -127,8 +126,8 @@ pip install repopacker
   repopacker downloada repopack.zip
   ```
 
-  Note this will download a zip file from the internet. Only use this option with
-  repositories you can trust.
+  **Note this will download a zip file from the internet. Only use this option with
+  repositories you can trust.**
 
 - **Clean:** When downloading an updated version of the repopacker.zip, it can be useful
   to clear all prexisting files tracked by RepoPacker:
