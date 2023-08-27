@@ -1,7 +1,9 @@
 import os
+import hashlib
 import json
 from dataclasses import asdict
 import subprocess
+
 
 from .constants import RP_CONFIG_FILE, VERSION
 from .types import RPConfig
@@ -39,7 +41,7 @@ def init():
     data = {
         "version": VERSION,
         "files": [],
-        "config": {"gitignore": True, "downloadpath": "", "version_warning": True},
+        "config": {"gitignore": True, "downloadpath": "", "version_warning": True, "checksum": True, "sha256": ""},
     }
     data = RPConfig(**data)
     if is_initialized(git_root):
@@ -55,3 +57,15 @@ def load_rp_config(git_root: str) -> RPConfig:
     with open(fname, "r") as f:
         data = RPConfig(**json.load(f))
     return data
+
+
+def compute_sha256(file_path: str) -> str:
+    """Compute the SHA-256 checksum of a file."""
+    sha256 = hashlib.sha256()
+    with open(file_path, "rb") as f:
+        while True:
+            data = f.read(65536)  # read in 64k chunks
+            if not data:
+                break
+            sha256.update(data)
+    return sha256.hexdigest()

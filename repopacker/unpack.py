@@ -1,5 +1,5 @@
 import os
-from .utils import get_git_root, load_rp_config, version_check
+from .utils import compute_sha256, get_git_root, load_rp_config, version_check
 import zipfile
 from .types import Command
 
@@ -34,6 +34,10 @@ def unpack(args):
     )  # Assuming the version check is still relevant
     data = load_rp_config(git_root)
     archive_path = os.path.join(git_root, args.archive_name)
+    if data.config.get("checksum", True):
+        if compute_sha256(archive_path) != data.config["sha256"]:
+            print("Checksum mismatch. Aborting")
+            exit(0)
 
     with zipfile.ZipFile(archive_path, "r") as zipf:
         if not verify_zip_structure(zipf, data.files):

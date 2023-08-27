@@ -1,6 +1,6 @@
 import requests
 import os
-from .utils import get_git_root, load_rp_config, version_check
+from .utils import compute_sha256, get_git_root, load_rp_config, version_check
 from .types import Command
 
 
@@ -33,7 +33,11 @@ def download(args):
     if download_path == "":
         print("No download path specified. Please set one in .repopacker.json.")
         exit(0)
-    download_file(download_path, os.path.join(git_root, args.archive_name))
+    output = os.path.join(git_root, args.archive_name)
+    download_file(download_path, output)
+    if data.config.get("checksum", True):
+        if compute_sha256(output) != data.config["sha256"]:
+            print("Warning: Checksum mismatch. Download file my have been altered.")
 
 
 download_command = Command(
