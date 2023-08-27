@@ -1,4 +1,3 @@
-import argparse
 from .commands import setup_parser
 
 # commands
@@ -8,13 +7,19 @@ from .commands import setup_parser
 # repopacker list (list all files in the repo)
 # repopacker pack (pack the repo into a single file)
 # repopacker unpack (unpack the repo from a single file)
-# repopacker config (configure the settings like archive format, compression, etc.)
+# repopacker download (download the pack from a url if provided.)
 # repopacker clean (clean all the files in the  repo)
 
 
 def main():
     parser = setup_parser()
+
     args = parser.parse_args()
+
+    # Logic to call the function based on the command
+    if hasattr(args, "func"):
+        args.func(args)
+    return parser
 
 
 if __name__ == "__main__":

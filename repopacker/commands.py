@@ -38,9 +38,4 @@ def setup_parser() -> argparse.ArgumentParser:
             else:
                 cmd_parser.add_argument(arg.name, help=arg.help, type=arg.arg_type)
 
-    args = parser.parse_args()
-
-    # Logic to call the function based on the command
-    if hasattr(args, "func"):
-        args.func(args)
     return parser

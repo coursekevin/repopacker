@@ -21,6 +21,6 @@ def pack(args):
             add_file_to_zip(zipf, filepath, path)
 
 
-pack_command = Command("pack", "Pack the repo into a single file", pack)
+pack_command = Command("pack", "Pack the repo into a single zip", pack)
 pack_command.add_argument("archive_name", help="Archive name", arg_type=str)
 

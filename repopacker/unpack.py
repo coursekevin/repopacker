@@ -54,8 +54,6 @@ def unpack(args):
 
 
 unpack_command = Command(
-    "unpack",
-    "Unpack the repo from a single file without overwriting existing files",
-    unpack,
+    "unpack", "Unpack the repo from a zip without overwriting existing files", unpack
 )
 unpack_command.add_argument("archive_name", help="Archive name to unpack", arg_type=str)

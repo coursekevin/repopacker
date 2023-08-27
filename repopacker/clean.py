@@ -21,4 +21,4 @@ def clean(args):
             print(f"Warning: {filepath} does not exist.")
 
 
-clean_command = Command("clean", "Clean all files in the repo", clean)
+clean_command = Command("clean", "Clean files in repopacker list", clean)
