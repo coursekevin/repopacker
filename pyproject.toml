@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "repopacker"
-version = "0.1.0" # remember to change in constants.py
+version = "0.1.1" # remember to change in constants.py
 description = "A low-tech solution to large files in Git"
 authors = ["Kevin Course <kevin.course@mail.utoronto.ca>"]
 readme = "README.md"
