@@ -86,8 +86,8 @@ pip install repopacker
   ```
 
   You should upload this to an accessible location such as [dropbox](https://www.dropbox.com)
-  or [Zenodo](https://zenodo.org/). Add the link to the `downloadpath` in the `.repopacker.json`.
-  Optionally you can also
+  or [Zenodo](https://zenodo.org/). 
+  Optionally you can also add the link to the `downloadpath` in the `.repopacker.json`.
 
 - **Unpack:** Populate directories with large files in their original locations,
 
@@ -158,7 +158,15 @@ file's integrity. Only use this option with repositories you can trust.**
 
 ## Gotchas
 
+- RepoPacker will attempt to zip your files into a single zip making it poorly
+suited to extremely large files (more than 100GB will probably become unwieldy).
+
+- To verify the integrity of zip files, RepoPacker will perform a checksum of the 
+zipped file before unpacking. This can be slow for large zips. You can disable this
+behavior by modifying the config.
+
 - RepoPacker is not directly integrated with Git meaning any operations which update
   the file tree (like `git mv`) will not be known to RepoPacker.
-  You must remove files these files and re-add
+  You must remove these files and re-add
   them using RepoPacker for them to be properly tracked.
+
