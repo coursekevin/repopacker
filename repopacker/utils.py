@@ -41,7 +41,14 @@ def init():
     data = {
         "version": VERSION,
         "files": [],
-        "config": {"gitignore": True, "downloadpath": "", "version_warning": True, "checksum": True, "sha256": ""},
+        "config": {
+            "gitignore": True,
+            "downloadpath": "",
+            "version_warning": False,
+            "checksum": True,
+            "sha256": "",
+            "compresslevel": 6,
+        },
     }
     data = RPConfig(**data)
     if is_initialized(git_root):

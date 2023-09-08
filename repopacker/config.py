@@ -15,12 +15,18 @@ def config(args):
         data.config["gitignore"] = False
     if args.gitignore:
         data.config["gitignore"] = True
+    if args.no_version_warning:
+        data.config["version_warning"] = False
+    if args.version_warning:
+        data.config["version_warning"] = True
     if args.no_checksum:
         data.config["checksum"] = False
     if args.checksum:
         data.config["checksum"] = True
     if args.downloadpath:
         data.config["downloadpath"] = args.downloadpath
+    if args.compresslevel:
+        data.config["compresslevel"] = args.compresslevel
 
     save(git_root, data)
 
@@ -62,5 +68,10 @@ config_command.add_flag(
 config_command.add_flag(
     ["-dp", "--downloadpath"],
     help="Set the url to download the archive from.",
+    action=None,
+)
+config_command.add_flag(
+    ["-cl", "--compresslevel"],
+    help="Set the compression level",
     action=None,
 )

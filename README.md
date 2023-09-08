@@ -143,7 +143,7 @@ file's integrity. Only use this option with repositories you can trust.**
   This will also remove `largefile.txt` from the `.gitignore` if you have the option
   enabled.
 
-  **Configuration:** See all configuration options:
+- **Configuration:** See all configuration options:
 
   ```bash
   repopacker config -h

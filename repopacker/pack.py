@@ -16,7 +16,8 @@ def pack(args):
     version_check(load_rp_config(git_root))
     data = load_rp_config(git_root)
     output = os.path.join(git_root, args.archive_name)
-    with zipfile.ZipFile(output, "w") as zipf:
+    c_level = data.config.get("compresslevel", 6)
+    with zipfile.ZipFile(output, "w", compresslevel=c_level) as zipf:
         for path in data.files:
             filepath = os.path.join(git_root, path)
             add_file_to_zip(zipf, filepath, path)
